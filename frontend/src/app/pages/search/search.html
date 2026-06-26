@@ -1,0 +1,99 @@
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h2 class="mb-4">
+
+                EyeCare Patient Search
+
+            </h2>
+
+            <div class="row">
+
+                <div class="col-md-10">
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Search Patient / Doctor / Diagnosis"
+                        [(ngModel)]="searchText"
+                        (keyup.enter)="search()">
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <button
+                        type="button"
+                        class="btn btn-primary w-100"
+                        (click)="search()">
+
+                        Search
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container mt-4">
+
+    <div
+        class="card mb-3 shadow-sm"
+        *ngFor="let patient of patients">
+
+        <div class="card-body">
+
+            <h5
+                [innerHTML]="patient.highlightName || patient.name">
+            </h5>
+
+            <p>
+
+                <strong>Patient ID :</strong>
+
+                {{patient.patientId}}
+
+            </p>
+
+            <p>
+
+                <strong>Doctor :</strong>
+
+                <span
+                    [innerHTML]="patient.highlightDoctor || patient.doctor">
+                </span>
+
+            </p>
+
+            <p>
+
+                <strong>Diagnosis :</strong>
+
+                <span
+                    [innerHTML]="patient.highlightDiagnosis || patient.diagnosis">
+                </span>
+
+            </p>
+
+            <p>
+
+                <strong>Appointment :</strong>
+
+                {{patient.appointmentDate | date:'dd-MMM-yyyy'}}
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
